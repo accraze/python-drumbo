@@ -1,4 +1,4 @@
-from instrument import Instrument
+from .instrument import Instrument
 
 class HiHat(Instrument):
 
