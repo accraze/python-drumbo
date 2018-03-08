@@ -1,9 +1,9 @@
-import os
 import sys
 import unittest
 
 from drumbo.song import Song
 from drumbo.drums import Kick, Snare, HiHat
+
 
 class TestSong(unittest.TestCase):
 
@@ -22,12 +22,13 @@ class TestSong(unittest.TestCase):
 
     def test_play(self):
         song = Song('breaks')
-        kick   = Kick('|X|_|_|_|X|_|_|_|')
+        kick = Kick('|X|_|_|_|X|_|_|_|')
         snare = Snare('|_|_|_|_|X|_|_|_|')
         hihat = HiHat('|_|_|X|_|_|_|X|_|')
         song.add(kick)
         song.add(snare)
         song.add(hihat)
+
         class MockOutput(object):
             def __init__(self):
                 self.data = []
@@ -45,4 +46,4 @@ class TestSong(unittest.TestCase):
         finally:
             sys.stdout = stdout_org
         pattern = '|Kick|_|HiHat|_|Kick+Snare|_|HiHat|_|\n'
-        self.assertEquals( str(mock_stdout), pattern)
+        self.assertEquals(str(mock_stdout), pattern)

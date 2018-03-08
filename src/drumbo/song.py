@@ -41,4 +41,3 @@ class Song:
         if not output:
             output = '_'
         return output
-
