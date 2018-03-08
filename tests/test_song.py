@@ -1,8 +1,10 @@
 import sys
 import unittest
 
+from drumbo.drums import HiHat
+from drumbo.drums import Kick
+from drumbo.drums import Snare
 from drumbo.song import Song
-from drumbo.drums import Kick, Snare, HiHat
 
 
 class TestSong(unittest.TestCase):
