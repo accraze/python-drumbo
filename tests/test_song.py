@@ -38,6 +38,9 @@ class TestSong(unittest.TestCase):
             def write(self, s):
                 self.data.append(s)
 
+            def flush(self):
+                pass
+
             def __str__(self):
                 return "".join(self.data)
         stdout_org = sys.stdout
