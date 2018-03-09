@@ -1,3 +1,6 @@
+import sys
+
+
 class Song:
 
     def __init__(self, title, bpm=120, steps=8):
@@ -18,10 +21,23 @@ class Song:
         self.drums.append(drum)
 
     def play(self):
-        output = '|'
+        self._print('|')
         for step in range(self.steps):
-            output += '{}|'.format(self._step_output(step))
-        print(output)
+            note = '{}'.format(self._step_output(step))
+            self._print(note + '|')
+            if (step + 1) % self.steps == 0:
+                self._print('\n', delay=False)
+
+    def _print(self, letter, delay=True):
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        if delay:
+            import time
+            time.sleep(self._timing_delay)
+
+    @property
+    def _timing_delay(self):
+        return (60/self.bpm) * .5
 
     def _matching_steps(self, pattern):
         if len(pattern) != self.steps:
