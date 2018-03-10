@@ -30,8 +30,7 @@ class Song:
             note = self._get_step_output(step)
             self._print(note + '|')
             # line break for every bar
-            if (step + 1) % self.steps == 0:
-                self._print('\n', delay=False)
+            self._check_newline(step)
 
     def _print(self, msg, delay=True):
         """
@@ -91,3 +90,12 @@ class Song:
                     multi = True
         return output
 
+    def _check_newline(self, step):
+        """
+        Prints line break
+        for each bar (8 steps)
+        """
+        if step % 7 == 0 and step != 0:
+            self._print('\n', delay=False)
+            if (step + 1) < self.steps:
+                self._print('|', delay=False)

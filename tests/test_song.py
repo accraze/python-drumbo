@@ -6,6 +6,18 @@ from drumbo.drums import Kick
 from drumbo.drums import Snare
 from drumbo.song import Song
 
+class MockOutput(object):
+    def __init__(self):
+        self.data = []
+
+    def write(self, s):
+        self.data.append(s)
+
+    def flush(self):
+        pass
+
+    def __str__(self):
+        return "".join(self.data)
 
 class TestSong(unittest.TestCase):
 
@@ -23,26 +35,14 @@ class TestSong(unittest.TestCase):
         self.assertEquals(len(s.drums), 1)
 
     def test_play(self):
-        song = Song('breaks')
+        song = Song('break')
         kick = Kick('|X|_|_|_|X|_|_|_|')
         snare = Snare('|_|_|_|_|X|_|_|_|')
         hihat = HiHat('|_|_|X|_|_|_|X|_|')
         song.add(kick)
         song.add(snare)
         song.add(hihat)
-
-        class MockOutput(object):
-            def __init__(self):
-                self.data = []
-
-            def write(self, s):
-                self.data.append(s)
-
-            def flush(self):
-                pass
-
-            def __str__(self):
-                return "".join(self.data)
+        # mock output
         stdout_org = sys.stdout
         mock_stdout = MockOutput()
         try:
