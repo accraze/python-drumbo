@@ -6,6 +6,7 @@ from drumbo.drums import Kick
 from drumbo.drums import Snare
 from drumbo.song import Song
 
+
 class MockOutput(object):
     def __init__(self):
         self.data = []
@@ -18,6 +19,7 @@ class MockOutput(object):
 
     def __str__(self):
         return "".join(self.data)
+
 
 class TestSong(unittest.TestCase):
 
