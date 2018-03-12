@@ -32,6 +32,12 @@ class Song:
             # line break for every bar
             self._check_newline(step)
 
+    def reset(self):
+        """
+        Clears existing drum patterns
+        """
+        self.drums = []
+
     def _print(self, msg, delay=True):
         """
         Prints a step's note(s) to
@@ -93,9 +99,9 @@ class Song:
     def _check_newline(self, step):
         """
         Prints line break
-        for each bar (8 steps)
+        for each bar (or 8 steps)
         """
-        if step % 7 == 0 and step != 0:
+        if ( (step + 1) % 8 == 0) and step != 0:
             self._print('\n', delay=False)
             if (step + 1) < self.steps:
                 self._print('|', delay=False)

@@ -54,3 +54,15 @@ class TestSong(unittest.TestCase):
             sys.stdout = stdout_org
         pattern = '|Kick|_|HiHat|_|Kick+Snare|_|HiHat|_|\n'
         self.assertEquals(str(mock_stdout), pattern)
+
+    def test_reset(self):
+        song = Song('reset')
+        kick = Kick('|X|_|_|_|X|_|_|_|')
+        snare = Snare('|_|_|_|_|X|_|_|_|')
+        hihat = HiHat('|_|_|X|_|_|_|X|_|')
+        song.add(kick)
+        song.add(snare)
+        song.add(hihat)
+        self.assertEquals(len(song.drums), 3)
+        song.reset()
+        self.assertEquals(len(song.drums), 0)
