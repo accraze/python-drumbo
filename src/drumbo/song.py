@@ -101,7 +101,7 @@ class Song:
         Prints line break
         for each bar (or 8 steps)
         """
-        if ( (step + 1) % 8 == 0) and step != 0:
+        if ((step + 1) % 8 == 0) and step != 0:
             self._print('\n', delay=False)
             if (step + 1) < self.steps:
                 self._print('|', delay=False)
