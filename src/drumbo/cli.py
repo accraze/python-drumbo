@@ -14,8 +14,9 @@ Why does this file exist, and why not put this in __main__?
 
   Also see (1) from http://click.pocoo.org/5/setuptools/#setuptools-integration
 """
-import click
 from subprocess import call
+
+import click
 
 prompt_str = 'Which song do you want to play?\n \
  - Basic\n \
